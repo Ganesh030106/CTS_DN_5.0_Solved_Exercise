@@ -4,7 +4,7 @@ This repository contains the solved questions and exercises for the CTS DN-0.5 p
 
 ---
 
-## 🐍 Python Module
+##  Python Module
 Covered all **55** Python coding exercises:
 
 *   **Variables and Data Types**
@@ -21,7 +21,7 @@ The solutions can be found in the [python/](file:///e:/Placement/CTS/coding%20ex
 
 ---
 
-## 🗄️ SQL Module
+##  SQL Module
 Covered all **25** ANSI SQL query coding exercises:
 
 *   **Joins** (INNER JOIN, LEFT JOIN)

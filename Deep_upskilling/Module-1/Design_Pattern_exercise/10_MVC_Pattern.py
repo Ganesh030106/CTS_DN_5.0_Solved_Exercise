@@ -35,7 +35,7 @@ controller = StudentController(student, view)
 
 controller.show_details()
 
-controller.update_name("Annapoorani")
+controller.update_name("Ganesh S")
 
 print("\nAfter Update\n")
 

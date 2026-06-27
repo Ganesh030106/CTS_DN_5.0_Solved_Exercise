@@ -1,0 +1,48 @@
+STEP 91: Initialize Alembic
+
+Command:
+
+alembic init migrations
+
+
+STEP 92: Edit alembic.ini
+
+sqlalchemy.url =
+
+postgresql+psycopg2://postgres:YOUR_PASSWORD@localhost:5432/college_db_orm
+
+
+STEP 93: Open migrations/env.py
+
+Import Base from models.py
+
+from models import Base
+
+target_metadata = Base.metadata
+
+
+STEP 94: Generate Initial Migration
+
+alembic revision --autogenerate -m "initial schema"
+
+
+STEP 95: Apply Migration
+
+alembic upgrade head
+
+
+STEP 96: Verify Tables
+
+Open pgAdmin4: 
+
+Run the query command:
+SELECT column_name
+FROM information_schema.columns
+WHERE table_name='students';
+
+Verify:
+departments
+students
+courses
+enrollments
+professors

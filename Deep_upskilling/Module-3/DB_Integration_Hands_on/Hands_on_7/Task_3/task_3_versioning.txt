@@ -1,0 +1,32 @@
+STEP 104: View Migration History
+
+alembic history
+
+
+STEP 105: View Current Version
+
+alembic current
+
+
+STEP 106: Upgrade Again
+
+alembic upgrade head
+
+
+STEP 107: Verify Current Version
+
+alembic current
+
+
+STEP 108: Observation
+
+Alembic tracks schema changes
+using migration scripts.
+
+
+Advantages:
+
+1. Version control for databases
+2. Easy rollback
+3. Team collaboration
+4. Safe schema evolution

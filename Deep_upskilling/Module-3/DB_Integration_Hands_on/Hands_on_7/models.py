@@ -19,8 +19,9 @@ relationship
 
 # STEP 76: PostgreSQL Connection
 
-DATABASE_URL = ("postgresql+psycopg2://postgres:Ganesh36#$@localhost:5432/colg_db_orm")
-
+DATABASE_URL = (
+"postgresql+psycopg2://postgres:Ganesh36#$@localhost:5432/clg_db_orm"
+)
 
 engine = create_engine(DATABASE_URL,echo=True)
 
@@ -53,6 +54,8 @@ class Student(Base):
     first_name = Column(String(50), nullable=False)
     last_name = Column(String(50), nullable=False)
     email = Column(String(100), unique=True, nullable=False)
+    phone_number = Column(String(15))
+
     date_of_birth = Column(Date)
     department_id = Column(Integer,ForeignKey("departments.department_id"))
     enrollment_year = Column(Integer)

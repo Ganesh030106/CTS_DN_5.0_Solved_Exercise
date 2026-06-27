@@ -1,0 +1,47 @@
+STEP 97: Modify Student Model
+
+Add the phone_number column to the Student model in models.py:
+
+phone_number = Column(String(15))
+
+
+STEP 98: Generate Migration
+
+alembic revision --autogenerate -m "add phone number"
+
+
+STEP 99: Review Generated Script
+
+Verify:
+
+op.add_column(
+    'students',
+    sa.Column(
+        'phone_number',
+        sa.String(length=15)
+    )
+)
+
+
+STEP 100: Apply Migration
+
+alembic upgrade head
+
+
+STEP 101: Verify Column
+
+SELECT column_name
+FROM information_schema.columns
+WHERE table_name='students';
+
+
+STEP 102: Rollback Migration
+
+alembic downgrade -1
+
+
+STEP 103: Verify Column Removed
+
+SELECT column_name
+FROM information_schema.columns
+WHERE table_name='students';

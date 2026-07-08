@@ -1,0 +1,23 @@
+# Django
+django
+
+# Flask
+flask
+flask-sqlalchemy
+flask-migrate
+
+# FastAPI
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+python-multipart
+email-validator
+
+# Authentication
+python-jose[cryptography]
+passlib[bcrypt]
+bcrypt==4.0.1
+
+# Microservices
+requests

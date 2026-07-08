@@ -1,3 +1,21 @@
-__pycache__
-env
-venv
+# Virtual Environments
+venv/
+env/
+.env/
+.venv/
+
+# Python Bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE/Editor files (Optional but recommended)
+.vscode/
+.idea/
+.DS_Store

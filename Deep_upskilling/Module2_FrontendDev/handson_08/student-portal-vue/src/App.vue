@@ -1,15 +1,39 @@
 <template>
 
-  <Header />
+<nav>
 
-  <CoursesView />
+  <router-link to="/">
+    Courses
+  </router-link>
+
+  <router-link to="/profile">
+    Profile
+  </router-link>
+
+</nav>
+
+<router-view />
 
 </template>
 
-<script setup>
+<style>
 
-import Header from './components/Header.vue'
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+}
 
-import CoursesView from './views/CoursesView.vue'
+nav {
+  background: #1976d2;
+  padding: 15px;
+}
 
-</script>
+nav a {
+  color: white;
+  margin-right: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+</style>

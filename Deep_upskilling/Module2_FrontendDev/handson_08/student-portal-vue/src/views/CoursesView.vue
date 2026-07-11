@@ -9,17 +9,32 @@
     placeholder="Search Course"
   >
 
-  <CourseCard
+  <p v-if="loading">
+    Loading Courses...
+  </p>
+
+  <div
     v-for="course in filteredCourses"
     :key="course.id"
-    :name="course.name"
-    :code="course.code"
-    :credits="course.credits"
-    :grade="course.grade"
-  />
+    class="course-card">
 
-  <p v-if="filteredCourses.length === 0">
+    <h3>
+      {{ course.title }}
+    </h3>
+
+    <p>
+      {{ course.body }}
+    </p>
+
+  </div>
+
+  <p v-if="
+      !loading &&
+      filteredCourses.length === 0
+    ">
+
     No courses found
+
   </p>
 
 </div>
@@ -28,67 +43,53 @@
 
 <script setup>
 
-import { ref, computed, onMounted }
-from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
-import CourseCard
-from '../components/CourseCard.vue'
-
-const searchTerm = ref('')
+import { getCourses }
+from '../services/courseService'
 
 const courses = ref([])
 
-onMounted(() => {
+const searchTerm = ref('')
 
-  courses.value = [
+const loading = ref(false)
 
-    {
-      id: 1,
-      name: 'Data Structures',
-      code: 'CS101',
-      credits: 4,
-      grade: 'A'
-    },
+onMounted(async () => {
 
-    {
-      id: 2,
-      name: 'DBMS',
-      code: 'CS102',
-      credits: 3,
-      grade: 'A+'
-    },
+  loading.value = true
 
-    {
-      id: 3,
-      name: 'Operating Systems',
-      code: 'CS103',
-      credits: 4,
-      grade: 'B+'
-    },
+  try {
 
-    {
-      id: 4,
-      name: 'Computer Networks',
-      code: 'CS104',
-      credits: 3,
-      grade: 'A'
-    },
+    const response =
+      await getCourses()
 
-    {
-      id: 5,
-      name: 'Software Engineering',
-      code: 'CS105',
-      credits: 4,
-      grade: 'A+'
-    }
+    console.log(response.data)
 
-  ]
+    courses.value =
+      response.data
+
+  }
+
+  catch(error) {
+
+    console.error(
+      'API Error:',
+      error
+    )
+
+  }
+
+  finally {
+
+    loading.value = false
+
+  }
 
 })
 
 const filteredCourses = computed(() =>
   courses.value.filter(course =>
-    course.name
+    course.title
       .toLowerCase()
       .includes(searchTerm.value.toLowerCase())
   )
@@ -107,6 +108,20 @@ input {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
+}
+
+.course-card {
+  background: white;
+
+  padding: 15px;
+
+  margin-bottom: 15px;
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 2px 5px
+    rgba(0,0,0,0.1);
 }
 
 </style>
